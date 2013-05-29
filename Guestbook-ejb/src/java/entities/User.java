@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -23,10 +24,13 @@ public class User implements Serializable {
         @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
 	private String username, firstname, lastname, password, email;
 	
 	@Temporal(javax.persistence.TemporalType.DATE)
+	@NotNull
 	private Date dateOfBirth, lastOnline;
+	
 	private boolean online;	
 
 	public String getUsername() {
