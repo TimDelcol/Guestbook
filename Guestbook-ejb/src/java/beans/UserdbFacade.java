@@ -4,7 +4,8 @@
  */
 package beans;
 
-import entities.User;
+import entities.Userdb;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author matthias
  */
 @Stateless
-public class UserFacade extends AbstractFacade<User> {
+public class UserdbFacade extends AbstractFacade<Userdb> {
 	@PersistenceContext(unitName = "Guestbook-ejbPU")
 	private EntityManager em;
 
@@ -23,8 +24,21 @@ public class UserFacade extends AbstractFacade<User> {
 		return em;
 	}
 
-	public UserFacade() {
-		super(User.class);
+	public UserdbFacade() {
+		super(Userdb.class);
+	}
+	
+	public void createTestUser(){
+			
+	Userdb u = new Userdb();
+	
+	u.setFirstname("Matthias");
+	u.setLastname("Van Parys");
+	u.setUsername("mvp");
+	u.setPassword("mvp");
+	u.setDateOfBirth(new Date(System.currentTimeMillis()));
+	
+	em.persist(u);
 	}
 	
 }

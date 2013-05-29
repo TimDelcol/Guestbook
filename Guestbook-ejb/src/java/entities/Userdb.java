@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
  * @author matthias
  */
 @Entity
-public class User implements Serializable {
+public class Userdb implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,10 +29,10 @@ public class User implements Serializable {
 	
 	@Temporal(javax.persistence.TemporalType.DATE)
 	@NotNull
-	private Date dateOfBirth, lastOnline;
+	private Date dateOfBirth, lastOnline = new Date(0);
+		
+	private boolean online = false;	
 	
-	private boolean online;	
-
 	public String getUsername() {
 		return username;
 	}
@@ -115,10 +115,10 @@ public class User implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof User)) {
+		if (!(object instanceof Userdb)) {
 			return false;
 		}
-		User other = (User) object;
+		Userdb other = (Userdb) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}
