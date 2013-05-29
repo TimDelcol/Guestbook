@@ -5,10 +5,12 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -21,12 +23,75 @@ public class User implements Serializable {
         @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private String username, firstname, lastname, password, email;
 	
-	private String name;
-	
-	private String email;
-	
-	
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date dateOfBirth, lastOnline;
+	private boolean online;	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Date getLastOnline() {
+		return lastOnline;
+	}
+
+	public void setLastOnline(Date lastOnline) {
+		this.lastOnline = lastOnline;
+	}
+
+	public boolean isOnline() {
+		return online;
+	}
+
+	public void setOnline(boolean online) {
+		this.online = online;
+	}
 
 	public Long getId() {
 		return id;
@@ -58,7 +123,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "entities.User[ id=" + id + " ]";
+		return "Id:" + id + "Name: " + firstname + " " + lastname;
 	}
 	
 }
