@@ -17,11 +17,7 @@ public class Main {
 	
 	@EJB
 	private static UserdbFacade uf = new UserdbFacade();
-	
-	@PersistenceContext(unitName = "Guestbook-ejbPU")
-	EntityManager em;	
-	
-	
+		
 	public static void main(String args[]){
 			
 	System.out.println("program starting");

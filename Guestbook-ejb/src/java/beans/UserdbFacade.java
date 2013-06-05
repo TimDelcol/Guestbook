@@ -8,6 +8,7 @@ import entities.Userdb;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -16,12 +17,15 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class UserdbFacade extends AbstractFacade<Userdb> {
+	
+	EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("Guestbook-ejbPU");
+	
 	@PersistenceContext(unitName = "Guestbook-ejbPU")
-	private EntityManager em;
+	private EntityManager em = emf.createEntityManager();
 
 	@Override
 	protected EntityManager getEntityManager() {
-		return em;
+			return em;
 	}
 
 	public UserdbFacade() {
@@ -38,7 +42,10 @@ public class UserdbFacade extends AbstractFacade<Userdb> {
 	u.setPassword("mvp");
 	u.setDateOfBirth(new Date(System.currentTimeMillis()));
 	
-	em.persist(u);
+	if(getEntityManager()==null)
+		System.out.println("null, null everywhere");
+	else
+		getEntityManager().persist(u);
 	}
 	
 }
