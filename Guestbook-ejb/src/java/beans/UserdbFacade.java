@@ -8,7 +8,6 @@ import entities.Userdb;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -18,14 +17,12 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class UserdbFacade extends AbstractFacade<Userdb> {
 	
-	EntityManagerFactory emf = javax.persistence.Persistence.createEntityManagerFactory("Guestbook-ejbPU");
-	
-	@PersistenceContext(unitName = "Guestbook-ejbPU")
-	private EntityManager em = emf.createEntityManager();
+	@PersistenceContext(unitName="Guestbook-ejbPU")
+	private EntityManager em;
 
 	@Override
 	protected EntityManager getEntityManager() {
-			return em;
+		return em;
 	}
 
 	public UserdbFacade() {

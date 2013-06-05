@@ -6,30 +6,61 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author matthias
  */
 @Entity
+@XmlRootElement
+@Table(name = "USERDB")
 public class Userdb implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	
 	@Id
+	@Column(name="ID")
         @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@NotNull
-	private String username, firstname, lastname, password, email;
+	@Column(name="USERNAME")
+	private String username;
+	
+	@NotNull
+	@Column(name="FIRSTNAME")
+	private String firstname;
+	
+	@NotNull
+	@Column(name="LASTNAME")
+	private String lastname;
+	
+	@NotNull
+	@Column(name="PASSWORD")
+	private String password;
+	
+	@NotNull
+	@Column(name="EMAIL")
+	private String email;
 	
 	@Temporal(javax.persistence.TemporalType.DATE)
 	@NotNull
-	private Date dateOfBirth, lastOnline = new Date(0);
+	@Column(name="DATEOFBIRTH")
+	private Date dateOfBirth;
+		
+	@Temporal(javax.persistence.TemporalType.DATE)
+	@NotNull
+	@Column(name="LASTONLINE")
+	private Date lastOnline = new Date(0);
 		
 	private boolean online = false;	
 	
