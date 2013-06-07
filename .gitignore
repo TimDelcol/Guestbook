@@ -7,3 +7,4 @@
 /Guestbook-war/nbproject/private/
 /nbproject/private/
 /Guestbook-ejb/nbproject/private/
+/Guestbook-ejb/src/conf/persistence.xml

@@ -1,9 +1,12 @@
+package servlets;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import entities.CommentFacadeLocal;
+import beans.CommentFacadeLocal;
+import beans.UserentityFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -17,8 +20,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author Silver Desktop
  */
 public class CommentServlet extends HttpServlet {
-    @EJB
-    private CommentFacadeLocal commentFacade;
+	@EJB
+	private UserentityFacadeLocal userentityFacade;
+	@EJB
+	private CommentFacadeLocal commentFacade;
+    
+    
 
     /**
      * Processes requests for both HTTP
@@ -46,6 +53,7 @@ public class CommentServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
             commentFacade.createComment();
+	    userentityFacade.createTestUser();
         } finally {            
             out.close();
         }
