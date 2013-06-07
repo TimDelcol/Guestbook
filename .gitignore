@@ -4,3 +4,6 @@
 /Guestbook-war/dist/
 /Guestbook-war/build/
 /Guestbook-ejb/dist/
+/Guestbook-war/nbproject/private/
+/nbproject/private/
+/Guestbook-ejb/nbproject/private/
