@@ -5,6 +5,7 @@ package servlets;
  * and open the template in the editor.
  */
 
+import beans.Counter;
 import beans.UserentityFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 public class CommentServlet extends HttpServlet {
 	@EJB
 	private UserentityFacadeLocal userentityFacade;
-   
+        
+        @EJB
+        private Counter counter;
     
 
     /**
@@ -50,6 +53,9 @@ public class CommentServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 	    userentityFacade.createTestUser();
+            counter.incrementCounter();
+            out.println("<b>Number of times counter was accessed<b> " +
+            counter.getCounter() + "<br><br>" );            
         } finally {            
             out.close();
         }
