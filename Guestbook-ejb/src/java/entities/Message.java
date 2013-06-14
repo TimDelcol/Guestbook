@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,8 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author matthias
  */
 @Entity
-@Table(catalog = "a12_DA5", schema = "dbo")
-@XmlRootElement
+@Table(catalog ="a12_DA5", schema="dbo")
+//@XmlRootElement
 @NamedQueries({
 	@NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m"),
 	@NamedQuery(name = "Message.findById", query = "SELECT m FROM Message m WHERE m.id = :id"),
@@ -36,17 +38,20 @@ public class Message implements Serializable {
         @Basic(optional = false)
         @NotNull
         @Column(nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Size(max = 50)
         @Column(length = 50)
 	private String title;
-	@Size(max = 2147483647)
-        @Column(length = 2147483647)
+        @Column(length = 8000)
 	private String body;
-	@JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+        
+        /*
+	@JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
         @ManyToOne(optional = false)
 	private Userentity userId;
-
+        */
+         
 	public Message() {
 	}
 
@@ -78,6 +83,7 @@ public class Message implements Serializable {
 		this.body = body;
 	}
 
+        /*
 	public Userentity getUserId() {
 		return userId;
 	}
@@ -85,7 +91,8 @@ public class Message implements Serializable {
 	public void setUserId(Userentity userId) {
 		this.userId = userId;
 	}
-
+        */
+        
 	@Override
 	public int hashCode() {
 		int hash = 0;

@@ -17,6 +17,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,8 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author matthias
  */
 @Entity
-@Table(catalog = "a12_DA5", schema = "dbo")
-@XmlRootElement
+@Table(catalog ="a12_DA5", schema="dbo")
 /*@NamedQueries({
 	@NamedQuery(name = "Userentity.findAll", query = "SELECT u FROM Userentity u"),
 	@NamedQuery(name = "Userentity.findById", query = "SELECT u FROM Userentity u WHERE u.id = :id"),
@@ -67,43 +67,53 @@ public class Userentity implements Serializable {
         @Size(min = 1, max = 50)
         @Column(nullable = false, length = 50)
 	private String email;
-	/*
+	
 	@Basic(optional = false)
         @NotNull
         @Column(nullable = false)
-        @Temporal(TemporalType.TIMESTAMP)
+        @Temporal(TemporalType.DATE)
 	private Date dateofbirth;
-	*/
+	
 	@Basic(optional = false)
         @NotNull
         @Size(min = 1, max = 50)
         @Column(nullable = false, length = 50)
 	private String password;
-	/*
+	
 	@Basic(optional = false)
         @NotNull
-        @Size(min = 1, max = 50)
         @Column(nullable = false, length = 50)
 	@Enumerated(EnumType.STRING)
 	private Rights rights;
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userId")
+        
+	@OneToMany(fetch = FetchType.LAZY/*, cascade = CascadeType.ALL, mappedBy = "foreignKey"*/)
+        @JoinColumn(name = "userFK")
 	private Collection<Message> messageCollection;
-	*/
-	public Userentity() {
-	}
 
+        public Userentity()
+        {
+            
+        }
+        
 	public Userentity(Integer id) {
 		this.id = id;
 	}
 
-	public Userentity(Integer id, String username, String email, /*Date dateofbirth, */String password/*, Rights rights*/) {
+	/**
+     *
+     * @param id
+     * @param username
+     * @param email
+     * @param dateofbirth
+     * @param password
+     */
+    public Userentity(Integer id, String username, String email, Date dateofbirth, String password, Rights rights) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
-		//this.dateofbirth = dateofbirth;
+		this.dateofbirth = dateofbirth;
 		this.password = password;
-		//this.rights = rights;
+		this.rights = rights;
 	}
 
 	public Integer getId() {
@@ -129,7 +139,7 @@ public class Userentity implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-/*
+
 	public Date getDateofbirth() {
 		return dateofbirth;
 	}
@@ -137,7 +147,7 @@ public class Userentity implements Serializable {
 	public void setDateofbirth(Date dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-*/
+
 	public String getPassword() {
 		return password;
 	}
@@ -145,7 +155,7 @@ public class Userentity implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-/*
+
 	public Rights getRights() {
 		return rights;
 	}
@@ -161,8 +171,8 @@ public class Userentity implements Serializable {
 
 	public void setMessageCollection(Collection<Message> messageCollection) {
 		this.messageCollection = messageCollection;
-	}
-*/
+    }
+
 	@Override
 	public int hashCode() {
 		int hash = 0;
@@ -187,5 +197,4 @@ public class Userentity implements Serializable {
 	public String toString() {
 		return "entities.Userentity[ id=" + id + " ]";
 	}
-	
 }
