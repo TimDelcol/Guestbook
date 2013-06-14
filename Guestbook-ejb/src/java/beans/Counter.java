@@ -4,8 +4,10 @@
  */
 package beans;
 
+import interceptors.LoggingInterceptor;
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
+import javax.interceptor.Interceptors;
 
 /**
  *
@@ -13,6 +15,7 @@ import javax.ejb.LocalBean;
  */
 @Stateful
 @LocalBean
+@Interceptors(LoggingInterceptor.class)
 public class Counter {
     
     private int counter = 0;

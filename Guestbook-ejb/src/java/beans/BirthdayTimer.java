@@ -4,12 +4,14 @@
  */
 package beans;
 
+import interceptors.LoggingInterceptor;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.mail.*;
 import javax.mail.internet.*;
 
@@ -18,6 +20,7 @@ import javax.mail.internet.*;
  * @author Roel_Storms
  */
 @Stateless
+@Interceptors(LoggingInterceptor.class)
 public class BirthdayTimer implements BirthdayTimerLocal {
 
     @Resource(name = "mail")

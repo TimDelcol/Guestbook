@@ -6,9 +6,11 @@ package beans;
 
 import entities.Message;
 import entities.Userentity;
+import interceptors.LoggingInterceptor;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -17,6 +19,7 @@ import javax.persistence.PersistenceContext;
  * @author matthias
  */
 @Stateless
+@Interceptors(LoggingInterceptor.class)
 public class UserentityFacade extends AbstractFacade<Userentity> implements UserentityFacadeLocal {
 	@PersistenceContext(unitName = "Guestbook-ejbPU")
 	private EntityManager em;
