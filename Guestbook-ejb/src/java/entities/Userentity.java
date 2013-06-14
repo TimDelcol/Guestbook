@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -34,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(catalog = "a12_DA5", schema = "dbo")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
 	@NamedQuery(name = "Userentity.findAll", query = "SELECT u FROM Userentity u"),
 	@NamedQuery(name = "Userentity.findById", query = "SELECT u FROM Userentity u WHERE u.id = :id"),
 	@NamedQuery(name = "Userentity.findByUsername", query = "SELECT u FROM Userentity u WHERE u.username = :username"),
@@ -42,6 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Userentity.findByDateofbirth", query = "SELECT u FROM Userentity u WHERE u.dateofbirth = :dateofbirth"),
 	@NamedQuery(name = "Userentity.findByPassword", query = "SELECT u FROM Userentity u WHERE u.password = :password"),
 	@NamedQuery(name = "Userentity.findByRights", query = "SELECT u FROM Userentity u WHERE u.rights = :rights")})
+*/
 public class Userentity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -49,6 +52,7 @@ public class Userentity implements Serializable {
         @Basic(optional = false)
         @NotNull
         @Column(nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Basic(optional = false)
@@ -63,19 +67,19 @@ public class Userentity implements Serializable {
         @Size(min = 1, max = 50)
         @Column(nullable = false, length = 50)
 	private String email;
-	
+	/*
 	@Basic(optional = false)
         @NotNull
         @Column(nullable = false)
         @Temporal(TemporalType.TIMESTAMP)
 	private Date dateofbirth;
-	
+	*/
 	@Basic(optional = false)
         @NotNull
         @Size(min = 1, max = 50)
         @Column(nullable = false, length = 50)
 	private String password;
-	
+	/*
 	@Basic(optional = false)
         @NotNull
         @Size(min = 1, max = 50)
@@ -85,7 +89,7 @@ public class Userentity implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userId")
 	private Collection<Message> messageCollection;
-
+	*/
 	public Userentity() {
 	}
 
@@ -93,13 +97,13 @@ public class Userentity implements Serializable {
 		this.id = id;
 	}
 
-	public Userentity(Integer id, String username, String email, Date dateofbirth, String password, Rights rights) {
+	public Userentity(Integer id, String username, String email, /*Date dateofbirth, */String password/*, Rights rights*/) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
-		this.dateofbirth = dateofbirth;
+		//this.dateofbirth = dateofbirth;
 		this.password = password;
-		this.rights = rights;
+		//this.rights = rights;
 	}
 
 	public Integer getId() {
@@ -125,7 +129,7 @@ public class Userentity implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+/*
 	public Date getDateofbirth() {
 		return dateofbirth;
 	}
@@ -133,7 +137,7 @@ public class Userentity implements Serializable {
 	public void setDateofbirth(Date dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
-
+*/
 	public String getPassword() {
 		return password;
 	}
@@ -141,7 +145,7 @@ public class Userentity implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+/*
 	public Rights getRights() {
 		return rights;
 	}
@@ -158,7 +162,7 @@ public class Userentity implements Serializable {
 	public void setMessageCollection(Collection<Message> messageCollection) {
 		this.messageCollection = messageCollection;
 	}
-
+*/
 	@Override
 	public int hashCode() {
 		int hash = 0;

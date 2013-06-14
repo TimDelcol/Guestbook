@@ -31,11 +31,11 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
 	@Override
 	public void createTestUser() {
 		Userentity u = new Userentity();
-		u.setDateofbirth(new Date(0));
+		//u.setDateofbirth(new Date(0));
 		u.setEmail("mvp@mvp.com");
 		u.setPassword("pwd");
 		u.setUsername("mvp");
-		u.setRights(entities.Rights.ADMIN);
+		//u.setRights(entities.Rights.ADMIN);
 		
 		em.persist(u);
 	}
