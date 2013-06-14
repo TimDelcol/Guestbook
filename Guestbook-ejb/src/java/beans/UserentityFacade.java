@@ -46,13 +46,19 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
                 Date date;
                 date = new Date();
                 u.setDateofbirth(date);
+		
                 ArrayList<Message> collection = new ArrayList<Message>();
+		ArrayList<Userentity> usersLiked = new ArrayList<Userentity>();
+		
                 Message m = new Message();
                 m.setTitle("Message title");
                 m.setBody("Message body");
+		usersLiked.add(u);
+		m.setLikedBy(usersLiked);
                 em.persist(m);
+		
                 collection.add(m);
-                u.setMessageCollection(collection);
+                u.setOwnMessages(collection);
 		u.setRights(entities.Rights.ADMIN);
 		
 		em.persist(u);

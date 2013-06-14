@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -24,8 +25,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -73,8 +72,13 @@ public class Userentity implements Serializable {
 	private Rights rights;
         
 	@OneToMany(fetch = FetchType.LAZY)
-        @JoinColumn(name = "userFK")
-	private Collection<Message> messageCollection;
+        @JoinColumn(name = "USER_ID")
+	private Collection<Message> ownMessages;
+	
+	@ManyToMany(mappedBy = "likedBy")
+	private Collection<Message> likedMessages;
+
+	
 
         public Userentity()
         {
@@ -150,14 +154,21 @@ public class Userentity implements Serializable {
 		this.rights = rights;
 	}
 
-	@XmlTransient
-	public Collection<Message> getMessageCollection() {
-		return messageCollection;
+	public Collection<Message> getOwnMessages() {
+		return ownMessages;
 	}
 
-	public void setMessageCollection(Collection<Message> messageCollection) {
-		this.messageCollection = messageCollection;
+	public void setOwnMessages(Collection<Message> ownMessages) {
+		this.ownMessages = ownMessages;
     }
+	
+	public Collection<Message> getLikedMessages() {
+		return likedMessages;
+	}
+
+	public void setLikedMessages(Collection<Message> likedMessages) {
+		this.likedMessages = likedMessages;
+	}
 
 	@Override
 	public int hashCode() {

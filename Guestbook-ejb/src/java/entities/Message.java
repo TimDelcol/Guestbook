@@ -5,11 +5,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -39,7 +43,11 @@ public class Message implements Serializable {
 	
         @Column(columnDefinition = "text", length = 20000)
 	private String body;
-        
+	
+	@ManyToMany
+	@JoinTable(name = "USER_MSG_LIKES", joinColumns = @JoinColumn(name = "MSG_ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+	private Collection<Userentity> likedBy;
+
        	public Message() {
 	}
 
@@ -71,6 +79,13 @@ public class Message implements Serializable {
 		this.body = body;
 	}
 
+	public Collection<Userentity> getLikedBy() {
+		return likedBy;
+	}
+
+	public void setLikedBy(Collection<Userentity> likedBy) {
+		this.likedBy = likedBy;
+	}
               
 	@Override
 	public int hashCode() {
