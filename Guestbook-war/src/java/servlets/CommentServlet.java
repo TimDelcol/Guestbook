@@ -5,7 +5,6 @@ package servlets;
  * and open the template in the editor.
  */
 
-import beans.CommentFacadeLocal;
 import beans.UserentityFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,9 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CommentServlet extends HttpServlet {
 	@EJB
 	private UserentityFacadeLocal userentityFacade;
-	@EJB
-	private CommentFacadeLocal commentFacade;
-    
+   
     
 
     /**
@@ -52,7 +49,6 @@ public class CommentServlet extends HttpServlet {
             out.println("<h1>Servlet CommentServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            commentFacade.createComment();
 	    userentityFacade.createTestUser();
         } finally {            
             out.close();

@@ -7,8 +7,6 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -27,7 +25,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -36,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(catalog ="a12_DA5", schema="dbo")
-/*@NamedQueries({
+@NamedQueries({
 	@NamedQuery(name = "Userentity.findAll", query = "SELECT u FROM Userentity u"),
 	@NamedQuery(name = "Userentity.findById", query = "SELECT u FROM Userentity u WHERE u.id = :id"),
 	@NamedQuery(name = "Userentity.findByUsername", query = "SELECT u FROM Userentity u WHERE u.username = :username"),
@@ -44,49 +41,38 @@ import javax.xml.bind.annotation.XmlTransient;
 	@NamedQuery(name = "Userentity.findByDateofbirth", query = "SELECT u FROM Userentity u WHERE u.dateofbirth = :dateofbirth"),
 	@NamedQuery(name = "Userentity.findByPassword", query = "SELECT u FROM Userentity u WHERE u.password = :password"),
 	@NamedQuery(name = "Userentity.findByRights", query = "SELECT u FROM Userentity u WHERE u.rights = :rights")})
-*/
+
 public class Userentity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-        @Basic(optional = false)
         @NotNull
-        @Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Basic(optional = false)
         @NotNull
-        @Size(min = 1, max = 50)
-        @Column(nullable = false, length = 50)
+        @Column(length = 50)
 	private String username;
 	
-	@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-	@Basic(optional = false)
+	@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid e-mail address")
         @NotNull
-        @Size(min = 1, max = 50)
-        @Column(nullable = false, length = 50)
+        @Column(length = 50)
 	private String email;
 	
-	@Basic(optional = false)
         @NotNull
-        @Column(nullable = false)
         @Temporal(TemporalType.DATE)
 	private Date dateofbirth;
 	
-	@Basic(optional = false)
         @NotNull
-        @Size(min = 1, max = 50)
-        @Column(nullable = false, length = 50)
+        @Column(length = 50)
 	private String password;
 	
-	@Basic(optional = false)
         @NotNull
-        @Column(nullable = false, length = 50)
+        @Column(length = 50)
 	@Enumerated(EnumType.STRING)
 	private Rights rights;
         
-	@OneToMany(fetch = FetchType.LAZY/*, cascade = CascadeType.ALL, mappedBy = "foreignKey"*/)
+	@OneToMany(fetch = FetchType.LAZY)
         @JoinColumn(name = "userFK")
 	private Collection<Message> messageCollection;
 
