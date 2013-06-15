@@ -4,65 +4,54 @@
  */
 package beans;
 
-import interceptors.LoggingInterceptor;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
-import javax.interceptor.Interceptors;
-import javax.mail.*;
-import javax.mail.internet.*;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
+import javax.jms.Queue;
+import javax.jms.Session;
 
 /**
  *
  * @author Roel_Storms
  */
 @Stateless
-@Interceptors(LoggingInterceptor.class)
 public class BirthdayTimer implements BirthdayTimerLocal {
+    
+    @Resource(mappedName="jms/EmailMDBFactory")
+    private  ConnectionFactory connectionFactory;
 
-    @Resource(name = "mail")
-    private Session mailSession;
-     
-    @Schedule(minute = "1", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "1", dayOfWeek = "*")
+    @Resource(mappedName="jms/EmailMDB")
+    private  Queue queue;
+    
+    
+    @Schedule(minute = "*", second = "0", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
     @Override
     public void myTimer() {
-        try {
-            System.out.println("Timer event: " + new Date());
-            // Create the message object
-         Message message = new MimeMessage(mailSession);
-
-         // Adjust the recipients. Here we have only one
-         // recipient. The recipient's address must be
-         // an object of the InternetAddress class.
-         message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse("bjornderaeve@hotmail.com", false));
-
-         // Set the message's subject
-         message.setSubject("It is " + new Date());
-
-         // Insert the message's body
-         message.setText("It is " + new Date());
-
-         // This is not mandatory, however, it is a good
-         // practice to indicate the software which
-         // constructed the message.
-         message.setHeader("X-Mailer", "My Mailer");
-
-         // Adjust the date of sending the message
-         Date timeStamp = new Date();
-         message.setSentDate(timeStamp);
-
-         // Use the 'send' static method of the Transport
-         // class to send the message
-         Transport.send(message);
-        } catch (MessagingException ex) {
-            Logger.getLogger(BirthdayTimer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         
+        System.out.println("Timer event: " + new Date());
+        try {
+            Connection connection = connectionFactory.createConnection();
+            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            MessageProducer messageProducer = session.createProducer(queue);
+
+            ObjectMessage message = session.createObjectMessage();
+            // here we create NewsEntity, that will be sent in JMS message
+            EmailMessage emailMessage = new EmailMessage("Je mag Roel geen pijntjes doen", "Je mag Roel geen pijntjes doen", "fientjedewinter@hotmail.com");
+
+            message.setObject(emailMessage);                
+            messageProducer.send(message);
+            messageProducer.close();
+            connection.close();
+
+        } catch (JMSException ex) {
+            ex.printStackTrace();
+        }
     }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
