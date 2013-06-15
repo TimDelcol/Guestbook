@@ -42,7 +42,7 @@ public class BirthdayTimer implements BirthdayTimerLocal {
 
             ObjectMessage message = session.createObjectMessage();
             // here we create NewsEntity, that will be sent in JMS message
-            EmailMessage emailMessage = new EmailMessage("Je mag Roel geen pijntjes doen", "Je mag Roel geen pijntjes doen", "fientjedewinter@hotmail.com");
+            EmailMessage emailMessage = new EmailMessage("Title", "Body", "roelstorms@hotmail.com");
 
             message.setObject(emailMessage);                
             messageProducer.send(message);
