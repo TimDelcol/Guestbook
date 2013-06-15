@@ -9,4 +9,9 @@
     <property name="User" value="a12_DA5"/>
     <property name="Password" value="a12_DA5"/>
   </jdbc-connection-pool>
+    <admin-object-resource enabled="true" jndi-name="jms/EmailMDB"  res-type="javax.jms.Queue"  res-adapter="jmsra">
+        <property name="Name" value="PhysicalQueue"/>
+    </admin-object-resource>
+    <connector-connection-pool name="jms/EmailMDBFactoryPool"  connection-definition-name="javax.jms.QueueConnectionFactory"  resource-adapter-name="jmsra"/>
+    <connector-resource enabled="true" jndi-name="jms/EmailMDBFactory" pool-name="jms/EmailMDBFactoryPool"  />
 </resources>
