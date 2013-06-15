@@ -53,8 +53,7 @@ public class BirthdayTimer implements BirthdayTimerLocal {
         
         try {
             Connection connection = connectionFactory.createConnection();
-            
-            
+           
             /*  
              *  Session is not transacted (false)
              * 
@@ -69,7 +68,7 @@ public class BirthdayTimer implements BirthdayTimerLocal {
             
             EmailMessage emailMessage;
             
-            for(Userentity user : birthdayPeople)
+            /*for(Userentity user : birthdayPeople)
             {
                 ObjectMessage message = session.createObjectMessage();
                 // here we create NewsEntity, that will be sent in JMS message
@@ -80,14 +79,14 @@ public class BirthdayTimer implements BirthdayTimerLocal {
 
                 message.setObject(emailMessage);                
                 messageProducer.send(message);
-            }
+            }*/
                     
             
             messageProducer.close();
             connection.close();
 
         } catch (JMSException ex) {
-            ex.printStackTrace();
+            System.out.println("JMSException");
         }
     }
     // Add business logic below. (Right-click in editor and choose
