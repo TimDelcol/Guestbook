@@ -9,6 +9,8 @@ import entities.Userentity;
 import interceptors.LoggingInterceptor;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Calendar;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
@@ -33,6 +35,17 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
 		super(Userentity.class);
 	}
 
+	@Override
+	public List<Userentity> getBirthdaysToday() {
+	
+		Calendar cal = Calendar.getInstance();
+		return (List<Userentity>)em.createNamedQuery("Userentity.findBirthdays")
+			.setParameter("month", cal.get(Calendar.MONTH)+1)//calendar months go from 0-11 so +1 is needed
+			.setParameter("day", cal.get(Calendar.DAY_OF_MONTH))
+			.getResultList();
+		
+	}
+	
 	@Override
 	public void createTestUser() {
             /*

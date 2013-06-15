@@ -31,4 +31,6 @@ public interface UserentityFacadeLocal {
 
 	void createTestUser();
 	
+	public List<Userentity> getBirthdaysToday();
+	
 }

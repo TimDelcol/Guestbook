@@ -7,8 +7,10 @@ package servlets;
 
 import beans.Counter;
 import beans.UserentityFacadeLocal;
+import entities.Userentity;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +55,12 @@ public class CommentServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
 	    userentityFacade.createTestUser();
+	    List<Userentity> birthdays = userentityFacade.getBirthdaysToday();
+	    if(birthdays.isEmpty())
+		    out.println("No users with a birthday today!<br>");
+	    for(Userentity u : birthdays) {
+		    out.println("Happy birthday " + u.getUsername() + "!<br>");
+	    }
             counter.incrementCounter();
             out.println("<b>Number of times counter was accessed<b> " +
             counter.getCounter() + "<br><br>" );            
