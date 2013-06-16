@@ -56,7 +56,7 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
               */  
 		Userentity u = new Userentity();
 		u.setDateofbirth(new Date(0));
-		u.setEmail("mvp@mvp.com");
+		u.setEmail("roelstorms@hotmail.com");
 		u.setPassword("pwd");
 		u.setUsername("mvp");
                 Date date;

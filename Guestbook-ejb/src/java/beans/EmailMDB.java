@@ -78,7 +78,7 @@ public class EmailMDB implements MessageListener {
 
                 // Use the 'send' static method of the Transport
                 // class to send the message
-                //Transport.send(mimeMessage);
+                // Transport.send(mimeMessage);
             } catch (MessagingException ex) {
                 Logger.getLogger(BirthdayTimer.class.getName()).log(Level.SEVERE, null, ex);
             }

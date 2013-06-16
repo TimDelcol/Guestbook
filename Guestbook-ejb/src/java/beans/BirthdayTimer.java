@@ -8,6 +8,7 @@ import entities.Userentity;
 import java.util.Collection;
 import java.util.Date;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
@@ -26,8 +27,9 @@ import org.jboss.weld.context.ejb.Ejb;
  */
 @Stateless
 public class BirthdayTimer implements BirthdayTimerLocal {
-    @Ejb
-    private UserentityFacade userEntityFacade;
+    @EJB
+    private UserentityFacadeLocal userentityFacade;
+    
     
     @Resource(mappedName="jms/EmailMDBFactory")
     private  ConnectionFactory connectionFactory;
@@ -49,12 +51,13 @@ public class BirthdayTimer implements BirthdayTimerLocal {
         
         System.out.println("Timer event: " + new Date());
 
-        Collection<Userentity> birthdayPeople = null;   // TODO: Should be assigned to UserentityFacade.getBirthdaysToday(Date date)
+        Collection<Userentity> birthdayPeople = userentityFacade.getBirthdaysToday();
         
         try {
             Connection connection = connectionFactory.createConnection();
            
-            /*  
+            /*  connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+             * 
              *  Session is not transacted (false)
              * 
              *  AUTO_ACKNOWLEDGE 
@@ -68,18 +71,18 @@ public class BirthdayTimer implements BirthdayTimerLocal {
             
             EmailMessage emailMessage;
             
-            /*for(Userentity user : birthdayPeople)
+            for(Userentity user : birthdayPeople)
             {
                 ObjectMessage message = session.createObjectMessage();
                 // here we create NewsEntity, that will be sent in JMS message
                 String title = "Happy birthday " + user.getUsername();
-                String body = "<br>Hello " +  user.getUsername() + ",<br> <br> The Java EE 6 guestbook team wishes you a happy birthday. <br> <br> Kind regards,<br>Java EE6 guestbook team";
+                String body = "\nHello " +  user.getUsername() + ",\n \nThe Java EE 6 guestbook team wishes you a happy birthday. \n \nKind regards,\nJava EE6 guestbook team";
 
                 emailMessage = new EmailMessage(title, body, user.getEmail());
 
                 message.setObject(emailMessage);                
                 messageProducer.send(message);
-            }*/
+            }
                     
             
             messageProducer.close();
