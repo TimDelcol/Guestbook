@@ -19,7 +19,7 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
-                
+                <prop key="registration.htm">RegistrationController</prop>
             </props>
         </property>
     </bean>
@@ -39,5 +39,5 @@
           p:viewName="index" />
     
     <bean class="controller.HelloController" p:helloService-ref="helloService"/>
-
+    <bean name="RegistrationController" class="controller.RegistrationController"/>
 </beans>
