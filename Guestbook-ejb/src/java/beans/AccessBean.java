@@ -20,6 +20,5 @@ public class AccessBean implements AccessBeanRemote {
 	UserentityFacadeLocal uf;
 	@EJB
 	MessageFacadeLocal mf;
-	
 
 }

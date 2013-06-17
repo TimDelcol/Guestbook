@@ -803,17 +803,23 @@ exists or setup the property manually. For example like this:
     <target if="is.jars.in.ejbjar" name="-library-inclusion-in-archive-by-user">
         <copyfiles files="${file.reference.sqljdbc4.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${libs.eclipselink.classpath}" todir="${build.classes.dir}"/>
+        <copyfiles files="${reference.RemoteFacades.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${reference.RemoteFacade.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${reference.RemoteFacade-1.jar}" todir="${build.classes.dir}"/>
     </target>
     <target if="is.server.weblogic" name="-library-inclusion-in-archive-weblogic">
         <basename file="${file.reference.sqljdbc4.jar}" property="manifest.file.reference.sqljdbc4.jar"/>
         <basename file="${libs.eclipselink.classpath}" property="manifest.libs.eclipselink.classpath"/>
+        <basename file="${reference.RemoteFacades.jar}" property="manifest.reference.RemoteFacades.jar"/>
         <basename file="${reference.RemoteFacade.jar}" property="manifest.reference.RemoteFacade.jar"/>
+        <basename file="${reference.RemoteFacade-1.jar}" property="manifest.reference.RemoteFacade-1.jar"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.file.reference.sqljdbc4.jar}"/>
             <attribute name="jar-2-Extension-Name" value="${manifest.libs.eclipselink.classpath}"/>
-            <attribute name="jar-3-Extension-Name" value="${manifest.reference.RemoteFacade.jar}"/>
+            <attribute name="jar-3-Extension-Name" value="${manifest.reference.RemoteFacades.jar}"/>
+            <attribute name="jar-4-Extension-Name" value="${manifest.reference.RemoteFacade.jar}"/>
+            <attribute name="jar-5-Extension-Name" value="${manifest.reference.RemoteFacade-1.jar}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
