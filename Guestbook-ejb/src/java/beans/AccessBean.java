@@ -21,4 +21,12 @@ public class AccessBean implements AccessBeanRemote {
 	@EJB
 	MessageFacadeLocal mf;
 
+    @Override
+    public void createTestUser() {
+        System.out.println("createTestUser");
+    }
+        
+        
+        
+
 }

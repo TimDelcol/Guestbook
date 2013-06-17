@@ -12,5 +12,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface AccessBeanRemote {
-	
+    
+    void createTestUser();
+            
 }
