@@ -16,7 +16,7 @@ import javax.interceptor.InvocationContext;
  */
 public class LoggingInterceptor implements Serializable{
 	
-	private static final Logger logger = Logger.getLogger("java.net");
+	private static final Logger logger = Logger.getLogger(LoggingInterceptor.class.getName());
 	
 	
 	@AroundInvoke

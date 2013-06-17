@@ -4,6 +4,7 @@
  */
 package beans;
 
+import entities.EmailMessage;
 import entities.Userentity;
 import java.util.Collection;
 import java.util.Date;
