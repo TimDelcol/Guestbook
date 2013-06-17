@@ -9,3 +9,9 @@
 /Guestbook-ejb/nbproject/private/
 /Guestbook-ejb/src/conf/persistence.xml
 /RemoteFacade/nbproject/private/
+/RemoteFacade/build
+/RemoteFacade/dist/
+/WebFlow/nbproject/private/
+/PageFlow/nbproject/private/
+/PageFlow/dist/
+/PageFlow/build/

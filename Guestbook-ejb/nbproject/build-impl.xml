@@ -837,7 +837,6 @@ exists or setup the property manually. For example like this:
     <target depends="compile" name="library-inclusion-in-manifest">
         <copyfiles files="${file.reference.sqljdbc4.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${libs.eclipselink.classpath}" todir="${dist.ear.dir}/lib"/>
-        <copyfiles files="${reference.RemoteFacades.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${reference.RemoteFacade.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${reference.RemoteFacade-1.jar}" todir="${dist.ear.dir}/lib"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update"/>
