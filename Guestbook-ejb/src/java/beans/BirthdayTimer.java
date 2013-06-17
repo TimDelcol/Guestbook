@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
+import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -25,12 +26,11 @@ import org.jboss.weld.context.ejb.Ejb;
  *
  * @author Roel_Storms
  */
-@Stateless
+@Singleton
 public class BirthdayTimer implements BirthdayTimerLocal {
     @EJB
     private UserentityFacadeLocal userentityFacade;
-    
-    
+   
     @Resource(mappedName="jms/EmailMDBFactory")
     private  ConnectionFactory connectionFactory;
 
