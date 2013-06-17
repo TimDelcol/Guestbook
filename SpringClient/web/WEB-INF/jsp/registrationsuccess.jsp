@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>${helloMessage}</h1>
+        <h1>Success! ${helloMessage}</h1>
     </body>
 </html>

@@ -8,7 +8,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 /**
  *
  * @author Roel_Storms
@@ -16,21 +18,38 @@ import javax.validation.constraints.Size;
 public class User {
  
     @NotNull
-    @Size(min=1,max=20)
-    private String name;
- 
-    @Min(0)
-    @Max(120)
-    private int age;
- 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    @Size(min=5,max=20)
+    private String username;
+
+    @NotNull
+    @Size(min=5,max=20)
+    private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+   
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
  
     public User() {
-        name = "";
-        age = 0;
+        username = "";
+        password = "";
     }
  
     // Setters & Getters

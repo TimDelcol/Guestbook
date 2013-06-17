@@ -4,7 +4,9 @@
  */
 package controller;
 
-import com.sun.xml.registry.common.tools.bindings_v3.Command;
+import beans.UserentityFacadeLocal;
+import entities.User;
+import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.validation.BindException;
@@ -18,15 +20,15 @@ import service.HelloService;
  */
 public class HelloController extends SimpleFormController {
     private HelloService helloService;
-    
+
     public HelloController() {
         //Initialize controller properties here or 
         //in the Web Application Context
 
-        setCommandClass(Name.class);
-        setCommandName("name");
-        setSuccessView("helloView");
-        setFormView("nameView");
+        setCommandClass(User.class);
+        setCommandName("user");
+        setSuccessView("registrationsucces");
+        setFormView("registration");
     }
     
     public void setHelloService(HelloService helloService) {
@@ -42,9 +44,11 @@ public class HelloController extends SimpleFormController {
      HttpServletResponse response, 
      Object command, 
      BindException errors) throws Exception {
-     Name name = (Name) command;
+     User user = (User) command;
+     service.HelloService.sayHello("test");
+     
      ModelAndView mv = new ModelAndView(getSuccessView());
-     mv.addObject("helloMessage", helloService.sayHello(name.getValue()));
+     mv.addObject("helloMessage", "Hello");
      return mv;
      }
      
