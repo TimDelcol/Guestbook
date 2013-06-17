@@ -4,7 +4,6 @@
  */
 package service;
 
-import beans.UserentityFacadeLocal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;

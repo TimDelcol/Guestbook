@@ -4,7 +4,6 @@
  */
 package controller;
 
-import beans.UserentityFacadeLocal;
 import entities.User;
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
