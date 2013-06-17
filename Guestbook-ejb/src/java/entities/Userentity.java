@@ -25,12 +25,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author matthias
  */
 @Entity
+@XmlRootElement
 @Table(catalog ="a12_DA5", schema="dbo")
 @NamedQueries({
 	@NamedQuery(name = "Userentity.findAll", query = "SELECT u FROM Userentity u"),
@@ -155,6 +158,7 @@ public class Userentity implements Serializable {
 		this.rights = rights;
 	}
 
+    @XmlTransient
 	public Collection<Message> getOwnMessages() {
 		return ownMessages;
 	}
@@ -163,6 +167,7 @@ public class Userentity implements Serializable {
 		this.ownMessages = ownMessages;
     }
 	
+    @XmlTransient
 	public Collection<Message> getLikedMessages() {
 		return likedMessages;
 	}
