@@ -12,7 +12,7 @@
   <title>Registration</title>
 </head>
 <body>
-  <form:form method="post" action="newmessage.htm" commandName="TempMessage">
+  <form:form method="post" action="newMessage.htm" commandName="TempMessage">
     <table>
       <tr>
         <td>Title <font color="red"><form:errors path="title" /></font></td>
@@ -28,7 +28,7 @@
       </tr>
       <tr>
       <tr>
-        <td><input type="submit" value="Submit" /></td>
+        <td><input type="submit" name="_eventId_post" value="Submit" /></td>
       </tr>
     </table>
   </form:form>
