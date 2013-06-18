@@ -83,8 +83,16 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
 
     @Override
     public Userentity login(String username, String password) {
-        // TODO : implement
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	
+	    List<Userentity> users = (List<Userentity>)em.createNamedQuery("Userentity.checkLogin")
+			.setParameter("username", username)
+			.setParameter("password", password)
+			.getResultList();
+	    
+	    if(users.isEmpty())
+		    return null;
+	    
+	    return users.get(0);
     }
 	
 }

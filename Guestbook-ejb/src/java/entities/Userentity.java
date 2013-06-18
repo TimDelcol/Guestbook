@@ -40,7 +40,8 @@ import javax.validation.constraints.Pattern;
 	@NamedQuery(name = "Userentity.findByDateofbirth", query = "SELECT u FROM Userentity u WHERE u.dateofbirth = :dateofbirth"),
 	@NamedQuery(name = "Userentity.findByPassword", query = "SELECT u FROM Userentity u WHERE u.password = :password"),
 	@NamedQuery(name = "Userentity.findByRights", query = "SELECT u FROM Userentity u WHERE u.rights = :rights"),
-	@NamedQuery(name = "Userentity.findBirthdays", query = "SELECT u FROM Userentity u WHERE FUNC('MONTH', u.dateofbirth) = :month AND FUNC('DAY', u.dateofbirth) = :day")
+	@NamedQuery(name = "Userentity.findBirthdays", query = "SELECT u FROM Userentity u WHERE FUNC('MONTH', u.dateofbirth) = :month AND FUNC('DAY', u.dateofbirth) = :day"),
+	@NamedQuery(name= "Userentity.loginCheck", query = "SELECT u from Userentity u WHERE u.username = :username AND u.password = :password")
 })
 public class Userentity implements Serializable {
 	private static final long serialVersionUID = 1L;
