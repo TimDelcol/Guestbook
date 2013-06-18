@@ -4,17 +4,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
 		http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
-	
-	<!-- New customers create a new account before moving forward -->
-	<view-state id="flow3" view="/SpringClient/flowpage3">
+
+	<view-state id="flow3" view="flowpage3">
 		<transition on="flow1button" to="goto1"/>
     <transition on="flow2button" to="goto2"/>
     <transition on="homeButton" to="gotoHome"/>
 	</view-state>
 	
-	<!-- See http://forum.springframework.org/showthread.php?t=51240 -->
-	<!-- Suppress leading slash to go servlet-relative? (Check docs) -->
-	<!-- View applies only when directly called; calling flows ignore it? -->
 	<end-state id="goto1" view="externalRedirect:contextRelative:/flowpage1.htm"/>
   <end-state id="goto2" view="externalRedirect:contextRelative:/flowpage2.htm"/>
   <end-state id="gotoHome" view="externalRedirect:contextRelative:/index.htm"/>

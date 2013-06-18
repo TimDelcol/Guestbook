@@ -16,7 +16,7 @@
     <table>
       <tr>
         <td>
-          <button name="_eventId_flow2button">Flow Page 2</button>
+          <input type="submit" name="_eventId_flow2button" value="Flow Page 2"/>
         </td>
         <td>
           <button name="_eventId_flow3button">Flow Page 3</button>
