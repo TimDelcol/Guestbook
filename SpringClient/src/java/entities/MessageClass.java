@@ -12,11 +12,15 @@ import org.hibernate.validator.constraints.Email;
  *
  * @author Roel_Storms
  */
-public class Message {
+public class MessageClass {
     @NotNull
     @Size(min=5,max=100)
     private String title;
 
+    @NotNull
+    @Size(min=5,max=20000)
+    private String body;
+        
     public String getTitle() {
         return title;
     }
@@ -33,7 +37,5 @@ public class Message {
         this.body = body;
     }
 
-    @NotNull
-    @Size(min=5,max=20000)
-    private String body;
+
 }

@@ -12,7 +12,7 @@
   <title>Registration</title>
 </head>
 <body>
-  <form:form method="post" action="newmessageform.htm" commandName="Message">
+  <form:form method="post" action="newmessageform.htm" commandName="MessageClass">
     <table>
       <tr>
         <td>Username <font color="red"><form:errors path="title" /></font></td>

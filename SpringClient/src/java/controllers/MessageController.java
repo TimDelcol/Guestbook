@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import entities.Message;
+import entities.MessageClass;
 import entities.User;
 import java.util.Map;
 import javax.validation.Valid;
@@ -22,16 +22,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MessageController {
     
     
+    @ModelAttribute("MessageClass")
+    public MessageClass getLoginForm() {
+        return new MessageClass();
+    }
+    
     @RequestMapping(value = "/newmessage.htm", method = RequestMethod.GET)
     public String showForm(Map model) {
         System.out.println("registration.htm GET");
         return "newmessageform";
     }
  
+ 
+    
     @RequestMapping(value = "/newmessage.htm", method = RequestMethod.POST)
     public String validateForm(
         
-        @ModelAttribute("Message") @Valid Message myMessage,
+        @ModelAttribute("MessageClass") @Valid MessageClass myMessage,
         BindingResult result, Map model) {
         System.out.println("newmessage.htm POST");
  
