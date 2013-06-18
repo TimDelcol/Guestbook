@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" type="text/css" media="screen" href="http://www.kelvinluck.com/assets/jquery/datePicker/v2/demo/styles/datePicker.css">
 -->
-<link rel="stylesheet" href="js/jquery-ui-1.10.3.custom/css/themes/black-tie/jquery-ui.css" />
+<link rel="stylesheet" href="js/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.css" />
 <script src="js/jquery-1.10.1.js"></script>
 <script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
 
@@ -28,13 +28,7 @@
   
 <script type="text/javascript" charset="utf-8">
 $(function() {
-    $( "#dateOfBirth" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      altField: "#alternate",
-      altFormat: "DD, d MM, yy",
-      dateFormat: "dd/mm/yy"
-    });
+    $( "#dateOfBirth" ).datepicker();
 })
 		</script>
 
@@ -66,7 +60,7 @@ $(function() {
         <td>Date of birth ("dd/MM/yyyy") <font color="red"><form:errors path="dateOfBirth"/></font></td>
       </tr>
       <tr>
-        <td><form:input path="dateOfBirth" /> &nbsp;<input type="text" id="alternate" size="30" /></td>
+        <td><form:input path="dateOfBirth" /></td>
       </tr>
       <tr>
         <td><input type="submit" name="_eventId_submit" value="Submit" /></td>
