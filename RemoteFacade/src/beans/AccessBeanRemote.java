@@ -16,4 +16,9 @@ public interface AccessBeanRemote {
     
     void createTestUser();
     void addUser(String username, String password, Date dateOfBirth, String email);
+    void addMessage(String title, String body);
+    String getUsername();
+    boolean login(String username, String password);
+    int getUserID();
+    boolean isLoggedIn();
 }

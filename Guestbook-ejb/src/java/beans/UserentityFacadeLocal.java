@@ -32,5 +32,7 @@ public interface UserentityFacadeLocal {
 	void createTestUser();
 	
 	public List<Userentity> getBirthdaysToday();
+        
+        Userentity login(String username, String password);
 	
 }

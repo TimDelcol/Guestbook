@@ -28,6 +28,8 @@ import javax.jms.Session;
 @Stateless
 @Interceptors(LoggingInterceptor.class)
 public class AccessBean implements AccessBeanRemote {
+    @EJB
+    private SessionLocal session;
 
     @EJB
     UserentityFacadeLocal uf;
@@ -78,4 +80,37 @@ public class AccessBean implements AccessBeanRemote {
             System.out.println("JMSException");
         }
     }
+
+    @Override
+    public void addMessage(String title, String body) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getUsername() {
+        return session.getUsername();
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        Userentity user = uf.login(username, password);
+        if(user != null)
+        {
+            session.setUser(user);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int getUserID() {
+        
+        return session.getID();
+    }
+
+    @Override
+    public boolean isLoggedIn() {
+        return session.isLoggedIn();
+    }
+    
 }

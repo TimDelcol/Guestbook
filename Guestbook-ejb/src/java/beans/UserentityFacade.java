@@ -80,5 +80,11 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
 		em.persist(u);
                 
 	}
+
+    @Override
+    public Userentity login(String username, String password) {
+        // TODO : implement
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
