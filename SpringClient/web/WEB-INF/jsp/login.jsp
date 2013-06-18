@@ -25,7 +25,7 @@
         <td>Password <font color="red"><form:errors path="password" /></font></td>
       </tr>
       <tr>
-        <td><form:input path="password" /></td>
+        <td><form:password path="password" /></td>
       </tr>
       <tr>
         <td><input type="submit" name="_eventId_submit" value="Submit" /></td>
