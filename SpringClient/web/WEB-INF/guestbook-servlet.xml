@@ -29,10 +29,10 @@
     <!-- This activates post-processors for annotation-based config -->
     <!-- http://www.infoq.com/articles/spring-2.5-part-1 -->
     <context:annotation-config/>
-    <mvc:annotation-driven />
-    <!-- Scan for controllers and services -->
+    
+    <!--<mvc:annotation-driven />
 	<context:component-scan base-package="controllers"/>
-  <context:component-scan base-package="entities"/>
+  <context:component-scan base-package="entities"/>-->
 	
     <!-- Enables POJO @Controllers (like CartController) -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
