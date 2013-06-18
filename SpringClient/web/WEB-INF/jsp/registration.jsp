@@ -39,7 +39,7 @@
         <td><form:input path="dateOfBirth" /></td>
       </tr>
       <tr>
-        <td><input type="submit" value="Submit" /></td>
+        <td><input type="submit" name="_eventId_submit" value="Submit" /></td>
       </tr>
     </table>
   </form:form>
