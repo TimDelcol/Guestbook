@@ -43,6 +43,4 @@ public class EmailMessage implements Serializable{
         this.body = body;
         this.address = address;
     }
-    
-    
 }
