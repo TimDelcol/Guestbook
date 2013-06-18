@@ -32,7 +32,7 @@ public class AccessBean implements AccessBeanRemote {
     @EJB
     UserentityFacadeLocal uf;
     @EJB
-    MessageFacadeLocal mf;
+    MessageEntityFacadeLocal mf;
     @Resource(mappedName = "jms/EmailMDBFactory")
     private ConnectionFactory connectionFactory;
     @Resource(mappedName = "jms/EmailMDB")

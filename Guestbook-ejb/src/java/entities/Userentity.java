@@ -74,10 +74,10 @@ public class Userentity implements Serializable {
         
 	@OneToMany(fetch = FetchType.LAZY)
         @JoinColumn(name = "USER_ID")
-	private Collection<Message> ownMessages;
+	private Collection<MessageEntity> ownMessages;
 	
 	@ManyToMany(mappedBy = "likedBy")
-	private Collection<Message> likedMessages;
+	private Collection<MessageEntity> likedMessages;
 
 	
 
@@ -154,19 +154,19 @@ public class Userentity implements Serializable {
 		this.rights = rights;
 	}
 
-	public Collection<Message> getOwnMessages() {
+	public Collection<MessageEntity> getOwnMessages() {
 		return ownMessages;
 	}
 
-	public void setOwnMessages(Collection<Message> ownMessages) {
+	public void setOwnMessages(Collection<MessageEntity> ownMessages) {
 		this.ownMessages = ownMessages;
     }
 	
-	public Collection<Message> getLikedMessages() {
+	public Collection<MessageEntity> getLikedMessages() {
 		return likedMessages;
 	}
 
-	public void setLikedMessages(Collection<Message> likedMessages) {
+	public void setLikedMessages(Collection<MessageEntity> likedMessages) {
 		this.likedMessages = likedMessages;
 	}
 

@@ -26,11 +26,11 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(catalog ="a12_DA5", schema="dbo")
 @NamedQueries({
-	@NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m"),
-	@NamedQuery(name = "Message.findById", query = "SELECT m FROM Message m WHERE m.id = :id"),
-	@NamedQuery(name = "Message.findByTitle", query = "SELECT m FROM Message m WHERE m.title = :title"),
-	@NamedQuery(name = "Message.findByBody", query = "SELECT m FROM Message m WHERE m.body = :body")})
-public class Message implements Serializable {
+	@NamedQuery(name = "Message.findAll", query = "SELECT m FROM MessageEntity m"),
+	@NamedQuery(name = "Message.findById", query = "SELECT m FROM MessageEntity m WHERE m.id = :id"),
+	@NamedQuery(name = "Message.findByTitle", query = "SELECT m FROM MessageEntity m WHERE m.title = :title"),
+	@NamedQuery(name = "Message.findByBody", query = "SELECT m FROM MessageEntity m WHERE m.body = :body")})
+public class MessageEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -48,10 +48,10 @@ public class Message implements Serializable {
 	@JoinTable(name = "USER_MSG_LIKES", joinColumns = @JoinColumn(name = "MSG_ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID"))
 	private Collection<Userentity> likedBy;
 
-       	public Message() {
+       	public MessageEntity() {
 	}
 
-	public Message(Integer id) {
+	public MessageEntity(Integer id) {
 		this.id = id;
 	}
 
@@ -97,10 +97,10 @@ public class Message implements Serializable {
 	@Override
 	public boolean equals(Object object) {
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Message)) {
+		if (!(object instanceof MessageEntity)) {
 			return false;
 		}
-		Message other = (Message) object;
+		MessageEntity other = (MessageEntity) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 			return false;
 		}

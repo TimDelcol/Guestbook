@@ -4,7 +4,7 @@
  */
 package beans;
 
-import entities.Message;
+import entities.MessageEntity;
 import entities.Userentity;
 import interceptors.LoggingInterceptor;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
 	@Override
 	public void createTestUser() {
             /*
-                Message m = new Message();
+                MessageEntity m = new MessageEntity();
                 m.setBody("body");
                 m.setTitle("Title");
                 em.persist(m);
@@ -63,10 +63,10 @@ public class UserentityFacade extends AbstractFacade<Userentity> implements User
                 date = new Date();
                 u.setDateofbirth(date);
 		
-                ArrayList<Message> collection = new ArrayList<Message>();
+                ArrayList<MessageEntity> collection = new ArrayList<MessageEntity>();
 		ArrayList<Userentity> usersLiked = new ArrayList<Userentity>();
 		
-                Message m = new Message();
+                MessageEntity m = new MessageEntity();
                 m.setTitle("Message title");
                 m.setBody("Message body");
 		usersLiked.add(u);

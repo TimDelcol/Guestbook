@@ -4,7 +4,7 @@
  */
 package beans;
 
-import entities.Message;
+import entities.MessageEntity;
 import interceptors.LoggingInterceptor;
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @Interceptors(LoggingInterceptor.class)
-public class MessageFacade extends AbstractFacade<Message> implements MessageFacadeLocal {
+public class MessageEntityFacade extends AbstractFacade<MessageEntity> implements MessageEntityFacadeLocal {
 	@PersistenceContext(unitName = "Guestbook-ejbPU")
 	private EntityManager em;
 
@@ -26,8 +26,8 @@ public class MessageFacade extends AbstractFacade<Message> implements MessageFac
 		return em;
 	}
 
-	public MessageFacade() {
-		super(Message.class);
+	public MessageEntityFacade() {
+		super(MessageEntity.class);
 	}
 	
 }
