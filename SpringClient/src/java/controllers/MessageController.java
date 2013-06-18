@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import entities.Message;
+import entities.TempMessage;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MessageController {
     
     
-    @ModelAttribute("Message")
-    public Message getLoginForm() {
-        return new Message();
+    @ModelAttribute("TempMessage")
+    public TempMessage getLoginForm() {
+        return new TempMessage();
     }
     
     @RequestMapping(value = "/newmessage.htm", method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class MessageController {
     @RequestMapping(value = "/newmessage.htm", method = RequestMethod.POST)
     public String validateForm(
         
-        @ModelAttribute("Message") @Valid Message myMessage,
+        @ModelAttribute("TempMessage") @Valid TempMessage myMessage,
         BindingResult result, Map model) {
         System.out.println("newmessage.htm POST");
  

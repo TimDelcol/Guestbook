@@ -27,5 +27,5 @@
 
         <mvc:annotation-driven/>
 	<context:component-scan base-package="controllers" />
-
+        <context:component-scan base-package="entities" />
 </beans>

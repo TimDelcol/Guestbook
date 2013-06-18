@@ -26,10 +26,10 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(catalog ="a12_DA5", schema="dbo")
 @NamedQueries({
-	@NamedQuery(name = "Message.findAll", query = "SELECT m FROM MessageEntity m"),
-	@NamedQuery(name = "Message.findById", query = "SELECT m FROM MessageEntity m WHERE m.id = :id"),
-	@NamedQuery(name = "Message.findByTitle", query = "SELECT m FROM MessageEntity m WHERE m.title = :title"),
-	@NamedQuery(name = "Message.findByBody", query = "SELECT m FROM MessageEntity m WHERE m.body = :body")})
+	@NamedQuery(name = "MessageEntity.findAll", query = "SELECT m FROM MessageEntity m"),
+	@NamedQuery(name = "MessageEntity.findById", query = "SELECT m FROM MessageEntity m WHERE m.id = :id"),
+	@NamedQuery(name = "MessageEntity.findByTitle", query = "SELECT m FROM MessageEntity m WHERE m.title = :title"),
+	@NamedQuery(name = "MessageEntity.findByBody", query = "SELECT m FROM MessageEntity m WHERE m.body = :body")})
 public class MessageEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -109,7 +109,7 @@ public class MessageEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "entities.Message[ id=" + id + " ]";
+		return "entities.MessageEntity[ id=" + id + " ]";
 	}
 	
 }

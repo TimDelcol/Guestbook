@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author Roel_Storms
  */
-public class User {
+public class TempUser {
  
     @NotNull
     @Size(min=5,max=20)
@@ -63,12 +63,12 @@ public class User {
     }
 
    
-    public User(String username, String password) {
+    public TempUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
  
-    public User() {
+    public TempUser() {
         username = "";
         password = "";
     }
