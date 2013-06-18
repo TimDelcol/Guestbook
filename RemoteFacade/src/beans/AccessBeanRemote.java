@@ -4,6 +4,7 @@
  */
 package beans;
 
+import java.util.Date;
 import javax.ejb.Remote;
 
 /**
@@ -14,5 +15,5 @@ import javax.ejb.Remote;
 public interface AccessBeanRemote {
     
     void createTestUser();
-            
+    void addUser(String username, String password, Date dateOfBirth, String email);
 }

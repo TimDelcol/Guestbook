@@ -98,8 +98,7 @@ public class Userentity implements Serializable {
      * @param dateofbirth
      * @param password
      */
-    public Userentity(Integer id, String username, String email, Date dateofbirth, String password, Rights rights) {
-		this.id = id;
+    public Userentity(String username, String email, Date dateofbirth, String password, Rights rights) {
 		this.username = username;
 		this.email = email;
 		this.dateofbirth = dateofbirth;
