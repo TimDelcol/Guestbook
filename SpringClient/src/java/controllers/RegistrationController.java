@@ -5,6 +5,7 @@
 package controllers;
 
 import beans.AccessBeanRemote;
+import beans.UserentityFacadeLocal;
 import entities.TempUser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class RegistrationController {
+
     AccessBeanRemote accessBean = lookupAccessBeanRemote();
     
     @InitBinder
@@ -67,7 +69,7 @@ public class RegistrationController {
         if (result.hasErrors()) {
             return "registration";
         }
- 
+        
         accessBean.addUser(myUser.getUsername(), myUser.getPassword(), myUser.getDateOfBirth(), myUser.getEmail());
         model.put("action", "Registration");
  
@@ -83,4 +85,6 @@ public class RegistrationController {
             throw new RuntimeException(ne);
         }
     }
+
+
 }

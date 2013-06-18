@@ -27,4 +27,11 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <remote>beans.AccessBeanRemote</remote>
     </ejb-ref>
+    <!--
+    <ejb-local-ref>
+        <ejb-ref-name>MessageEntityFacade</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>beans.MessageEntityFacadeLocal</local>
+        <ejb-link>Guestbook-ejb.jar#MessageEntityFacade</ejb-link>
+    </ejb-local-ref>-->
 </web-app>

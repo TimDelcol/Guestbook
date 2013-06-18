@@ -27,5 +27,6 @@
         </td>
       </tr>
     </table>
+        ${messages}
   </body>
 </html>
