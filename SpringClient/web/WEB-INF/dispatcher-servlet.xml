@@ -22,7 +22,7 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<!--<bean class="org.hibernate.validator.HibernateValidator" name="validator"/>-->
+	<bean class="org.hibernate.validator.HibernateValidator" name="validator"/>
 		
 
         <mvc:annotation-driven/>

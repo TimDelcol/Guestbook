@@ -4,8 +4,7 @@
  */
 package controllers;
 
-import entities.MessageClass;
-import entities.User;
+import entities.Message;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -22,14 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MessageController {
     
     
-    @ModelAttribute("MessageClass")
-    public MessageClass getLoginForm() {
-        return new MessageClass();
+    @ModelAttribute("Message")
+    public Message getLoginForm() {
+        return new Message();
     }
     
     @RequestMapping(value = "/newmessage.htm", method = RequestMethod.GET)
     public String showForm(Map model) {
-        System.out.println("registration.htm GET");
+        System.out.println("newmessage.htm GET");
         return "newmessageform";
     }
  
@@ -38,7 +37,7 @@ public class MessageController {
     @RequestMapping(value = "/newmessage.htm", method = RequestMethod.POST)
     public String validateForm(
         
-        @ModelAttribute("MessageClass") @Valid MessageClass myMessage,
+        @ModelAttribute("Message") @Valid Message myMessage,
         BindingResult result, Map model) {
         System.out.println("newmessage.htm POST");
  

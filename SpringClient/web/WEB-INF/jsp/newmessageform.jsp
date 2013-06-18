@@ -4,7 +4,7 @@
     Author     : Roel_Storms
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html>
 <head>
@@ -12,16 +12,16 @@
   <title>Registration</title>
 </head>
 <body>
-  <form:form method="post" action="newmessageform.htm" commandName="MessageClass">
+  <form:form method="post" action="newmessage.htm" commandName="Message">
     <table>
       <tr>
-        <td>Username <font color="red"><form:errors path="title" /></font></td>
+        <td>Title <font color="red"><form:errors path="title" /></font></td>
       </tr>
       <tr>
         <td><form:input path="title" /></td>
       </tr>
       <tr>
-        <td>Email <font color="red"><form:errors path="body" /></font></td>
+        <td>Message <font color="red"><form:errors path="body" /></font></td>
       </tr>
       <tr>
         <td><form:input path="body" /></td>
