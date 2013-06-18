@@ -5,7 +5,7 @@
 package controllers;
 
 import beans.AccessBeanRemote;
-import entities.User;
+import entities.TempUser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -33,23 +33,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegistrationController {
     AccessBeanRemote accessBean = lookupAccessBeanRemote();
     
-    
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
       SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
       binder.registerCustomEditor(Date.class, new CustomDateEditor(
               dateFormat, false));
     }
-
     
     @RequestMapping(value = "/")
     public String home() {
         return "index";
     }
  
-    @ModelAttribute("User")
-    public User getLoginForm() {
-        return new User();
+    @ModelAttribute("TempUser")
+    public TempUser getLoginForm() {
+        return new TempUser();
     }
     
     @RequestMapping(value = "/registration.htm", method = RequestMethod.GET)
@@ -61,7 +59,7 @@ public class RegistrationController {
     @RequestMapping(value = "/registration.htm", method = RequestMethod.POST)
     public String validateForm(
         
-        @ModelAttribute("User") @Valid User myUser,
+        @ModelAttribute("TempUser") @Valid TempUser myUser,
         BindingResult result, Map model) {
         System.out.println("Username: " + myUser.getUsername());
         System.out.println("registration.htm POST");
