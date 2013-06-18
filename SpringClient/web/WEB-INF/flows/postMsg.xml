@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+		http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	
+	<view-state id="newMsg" view="/newmessage.htm">
+		<transition on="post" to="postMsg"/>
+    <transition on="cancel" to="cancelPost"/>
+	</view-state>
+	
+	<end-state id="postMsg" view="externalRedirect:contextRelative:/newmessage.htm"/>
+  <end-state id="cancelPost" view="externalRedirect:contextRelative:/index.htm"/>
+</flow>

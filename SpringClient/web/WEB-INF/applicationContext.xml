@@ -22,5 +22,5 @@
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     
-    <bean name="helloService" class="service.HelloService" />
+    <!--<bean name="helloService" class="service.HelloService" /> -->
 </beans>
