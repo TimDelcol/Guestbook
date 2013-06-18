@@ -23,7 +23,7 @@
         <prop key="index.htm">indexController</prop>
         <prop key="login.htm">loginController</prop>
         <prop key="registration.htm">registrationController</prop>
-        <prop key="newmessageform.htm">messageController</prop>
+        <prop key="newmessage.htm">messageController</prop>
       </props>
     </property>
   </bean>

@@ -20,7 +20,7 @@
           <a href="${contextPath}/SpringClient/registration.htm">Register</a>
         </td>
         <td>
-          <a href="${contextPath}/SpringClient/newmessageform.htm">Post Message</a>
+          <a href="${contextPath}/SpringClient/newmessage.htm">Post Message</a>
         </td>
         <td>
           <a href="${contextPath}/SpringClient/flow1.do">Flow Pages</a>
