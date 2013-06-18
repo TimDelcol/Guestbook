@@ -6,12 +6,12 @@
 		http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 	<view-state id="flow3" view="flowpage3">
-		<transition on="flow1button" to="goto1"/>
-    <transition on="flow2button" to="goto2"/>
-    <transition on="homeButton" to="gotoHome"/>
+		<transition on="flow1link" to="goto1"/>
+    <transition on="flow2link" to="goto2"/>
+    <transition on="homeLink" to="gotoHome"/>
 	</view-state>
 	
-	<end-state id="goto1" view="externalRedirect:contextRelative:/flowpage1.htm"/>
-  <end-state id="goto2" view="externalRedirect:contextRelative:/flowpage2.htm"/>
+	<end-state id="goto1" view="externalRedirect:contextRelative:/flow1.do"/>
+  <end-state id="goto2" view="externalRedirect:contextRelative:/flow2.do"/>
   <end-state id="gotoHome" view="externalRedirect:contextRelative:/index.htm"/>
 </flow>

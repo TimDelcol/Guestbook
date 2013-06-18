@@ -16,13 +16,13 @@
     <table>
       <tr>
         <td>
-          <button name="_eventId_flow1button">Flow Page 1</button>
+          <a href="${flowExecutionUrl}&_eventId=flow1link">Flow Page 1</a>
         </td>
         <td>
-          <button name="_eventId_flow2button">Flow Page 2</button>
+          <a href="${flowExecutionUrl}&_eventId=flow2link">Flow Page 2</a>
         </td>
         <td>
-          <button name="_eventId_homeButton">Home</button>
+          <a href="${flowExecutionUrl}&_eventId=homeLink">Home</a>
         </td>
       </tr>
     </table>

@@ -16,13 +16,13 @@
     <table>
       <tr>
         <td>
-          <input type="submit" name="_eventId_flow2button" value="Flow Page 2"/>
+          <a href="${flowExecutionUrl}&_eventId=flow2link">Flow Page 2</a>
         </td>
         <td>
-          <button name="_eventId_flow3button">Flow Page 3</button>
+          <a href="${flowExecutionUrl}&_eventId=flow3link">Flow Page 3</a>
         </td>
         <td>
-          <button name="_eventId_homeButton">Home</button>
+          <a href="${flowExecutionUrl}&_eventId=homeLink">Home</a>
         </td>
       </tr>
     </table>
