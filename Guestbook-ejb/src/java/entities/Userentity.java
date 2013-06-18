@@ -25,6 +25,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -32,6 +33,7 @@ import javax.validation.constraints.Pattern;
  */
 @Entity
 @Table(catalog ="a12_DA5", schema="dbo")
+@XmlRootElement
 @NamedQueries({
 	@NamedQuery(name = "Userentity.findAll", query = "SELECT u FROM Userentity u"),
 	@NamedQuery(name = "Userentity.findById", query = "SELECT u FROM Userentity u WHERE u.id = :id"),
@@ -193,6 +195,10 @@ public class Userentity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "entities.Userentity[ id=" + id + " ]";
+		String toString = "ID: " + this.id + '\n';
+			toString += "Username: " + this.username + '\n';
+			toString += "E-mail: " + this.email + '\n';
+			toString += "Rights: " + this.rights;
+		return toString ;
 	}
 }
