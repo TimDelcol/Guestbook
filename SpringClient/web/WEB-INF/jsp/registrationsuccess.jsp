@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>${action} success! </h1>
+        <a href="${contextPath}/SpringClient/index.htm">Home</a>
     </body>
 </html>
