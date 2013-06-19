@@ -67,19 +67,21 @@ public class RegistrationController {
         BindingResult result, Map model) {
         System.out.println("Username: " + myUser.getUsername());
         System.out.println("registration.htm POST");
-        if(accessBean.isLoggedIn())
+        
+        /*if(accessBean.isLoggedIn())
         {
             model.put("loggedIn", "Logged in as " + accessBean.getUsername());
             
             return "login";
-        }
+        }*/
+        
         if (result.hasErrors()) {
             return "registration";
         }
  
         accessBean.addUser(myUser.getUsername(), myUser.getPassword(), myUser.getDateOfBirth(), myUser.getEmail());
         model.put("action", "Registration");
- 
+    
         return "registrationsuccess";
     }
 
