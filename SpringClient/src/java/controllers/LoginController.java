@@ -37,6 +37,12 @@ public class LoginController {
     @RequestMapping(value = "/login.htm", method = RequestMethod.GET)
     public String showForm(Map model) {
         System.out.println("login.htm GET");
+        if(accessBean.isLoggedIn())
+        {
+            model.put("loggedIn", "Logged in as " + accessBean.getUsername());
+            
+            return "login";
+        }
         return "login";
     }
  
@@ -56,9 +62,11 @@ public class LoginController {
         
         if(!accessBean.isLoggedIn())
         {
+            model.put("loginFailure", "Wrong username or password");
+            
             return "login";
         }
-        
+        model.put("loggedIn", accessBean.getUsername());
         model.put("action", "Login");
         return "registrationsuccess";
     }

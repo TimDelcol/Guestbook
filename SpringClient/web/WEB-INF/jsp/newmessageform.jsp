@@ -12,6 +12,7 @@
   <title>Registration</title>
 </head>
 <body>
+      ${loggedIn}
   <form:form method="post" action="newmessage.htm" commandName="TempMessage">
     <table>
       <tr>

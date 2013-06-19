@@ -53,6 +53,10 @@ public class RegistrationController {
     @RequestMapping(value = "/registration.htm", method = RequestMethod.GET)
     public String showForm(Map model) {
         System.out.println("registration.htm GET");
+        if(accessBean.isLoggedIn())
+        {
+            model.put("loggedIn", "Logged in as " + accessBean.getUsername());
+        }
         return "registration";
     }
  
@@ -63,7 +67,12 @@ public class RegistrationController {
         BindingResult result, Map model) {
         System.out.println("Username: " + myUser.getUsername());
         System.out.println("registration.htm POST");
- 
+        if(accessBean.isLoggedIn())
+        {
+            model.put("loggedIn", "Logged in as " + accessBean.getUsername());
+            
+            return "login";
+        }
         if (result.hasErrors()) {
             return "registration";
         }

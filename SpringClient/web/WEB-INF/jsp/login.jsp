@@ -13,6 +13,7 @@
   <title>Login</title>
 </head>
 <body>
+     ${loggedIn}
   <form:form method="post" action="login.htm" commandName="LoginUser">
     <table>
       <tr>
@@ -32,5 +33,6 @@
       </tr>
     </table>
   </form:form>
+    <font color="red">${loginFailure}</font>
 </body>
 </html>

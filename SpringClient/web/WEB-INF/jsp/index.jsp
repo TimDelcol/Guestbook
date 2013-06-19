@@ -27,5 +27,6 @@
         </td>
       </tr>
     </table>
+          ${loggedIn}
   </body>
 </html>

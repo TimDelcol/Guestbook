@@ -11,6 +11,8 @@ import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
 import entities.Userentity;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -20,6 +22,9 @@ import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
@@ -28,8 +33,8 @@ import javax.jms.Session;
 @Stateless
 @Interceptors(LoggingInterceptor.class)
 public class AccessBean implements AccessBeanRemote {
-    @EJB
-    private SessionLocal session;
+
+   
 
     @EJB
     UserentityFacadeLocal uf;
@@ -39,6 +44,11 @@ public class AccessBean implements AccessBeanRemote {
     private ConnectionFactory connectionFactory;
     @Resource(mappedName = "jms/EmailMDB")
     private Queue queue;
+
+    private SessionLocal session;
+    public AccessBean() {
+        session = lookupSessionLocal();
+    }
 
     @Override
     public void createTestUser() {
@@ -111,6 +121,17 @@ public class AccessBean implements AccessBeanRemote {
     @Override
     public boolean isLoggedIn() {
         return session.isLoggedIn();
+    }
+    
+    
+        private SessionLocal lookupSessionLocal() {
+        try {
+            Context c = new InitialContext();
+            return (SessionLocal) c.lookup("java:global/Guestbook/Guestbook-ejb/Session!beans.SessionLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
     
 }
