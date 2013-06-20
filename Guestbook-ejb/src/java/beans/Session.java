@@ -15,7 +15,7 @@ import javax.ejb.StatefulTimeout;
  * @author Roel_Storms
  */
 @Stateful
-@StatefulTimeout(value = 20, unit = TimeUnit.SECONDS)
+@StatefulTimeout(value = 20, unit = TimeUnit.MINUTES)
 public class Session implements SessionLocal {
 
     private Userentity user;
