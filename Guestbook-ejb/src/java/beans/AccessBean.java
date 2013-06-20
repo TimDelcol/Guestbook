@@ -4,6 +4,7 @@
  */
 package beans;
 
+import entities.MessageEntity;
 import entities.Rights;
 import interceptors.LoggingInterceptor;
 import javax.ejb.EJB;
@@ -16,7 +17,6 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
@@ -40,6 +40,7 @@ public class AccessBean implements AccessBeanRemote {
     UserentityFacadeLocal uf;
     @EJB
     MessageEntityFacadeLocal mf;
+    
     @Resource(mappedName = "jms/EmailMDBFactory")
     private ConnectionFactory connectionFactory;
     @Resource(mappedName = "jms/EmailMDB")
@@ -93,7 +94,16 @@ public class AccessBean implements AccessBeanRemote {
 
     @Override
     public void addMessage(String title, String body) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Userentity u = uf.find(session.getID());
+	MessageEntity m = new MessageEntity();
+	
+	m.setTitle(title);
+	m.setBody(body);
+	mf.create(m);
+	
+	u.getOwnMessages().add(m);
+	uf.edit(u);
+		
     }
 
     @Override
@@ -116,6 +126,11 @@ public class AccessBean implements AccessBeanRemote {
     public int getUserID() {
         
         return session.getID();
+    }
+    
+    @Override
+    public void logout() {
+	    session.setUser(null);
     }
 
     @Override

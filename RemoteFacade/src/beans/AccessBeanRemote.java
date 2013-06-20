@@ -21,4 +21,5 @@ public interface AccessBeanRemote {
     boolean login(String username, String password);
     int getUserID();
     boolean isLoggedIn();
+    void logout();
 }
