@@ -33,7 +33,8 @@ $(function() {
       changeYear: true,
       altField: "#alternate",
       altFormat: "DD, d MM, yy",
-      dateFormat: "dd/mm/yy"
+      dateFormat: "dd/mm/yy",
+      yearRange: '-65:-10'
     });
     $(".ui-datepicker").css('font-size', 12) 
 })

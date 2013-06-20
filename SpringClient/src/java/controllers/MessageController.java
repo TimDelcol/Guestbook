@@ -38,8 +38,13 @@ public class MessageController {
         if(accessBean.isLoggedIn())
         {
             model.put("loggedIn", "Logged in as " + accessBean.getUsername());
+            return "newmessageform";
         }
-        return "newmessageform";
+        else
+        {
+            model.put("loggedIn", "<font color='red'>Failed, not logged in</font>");
+            return "index";
+        }
     }
  
  
@@ -61,7 +66,7 @@ public class MessageController {
         }
  
         // TODO : put new message in the DB
-        //accessBean.addUser(myUser.getUsername(), myUser.getPassword(), myUser.getDateOfBirth(), myUser.getEmail());
+        accessBean.addMessage(myMessage.getTitle(), myMessage.getBody());
         model.put("action", "New message");
  
         return "registrationsuccess";
