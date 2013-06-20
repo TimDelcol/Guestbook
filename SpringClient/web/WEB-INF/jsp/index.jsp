@@ -17,6 +17,9 @@
           <a href="${contextPath}/SpringClient/login.htm">Login</a>
         </td>
         <td>
+          <a href="${contextPath}/SpringClient/logout.htm">Logout</a>
+        </td>
+        <td>
           <a href="${contextPath}/SpringClient/registration.htm">Register</a>
         </td>
         <td>
