@@ -68,12 +68,12 @@ public class RegistrationController {
         System.out.println("Username: " + myUser.getUsername());
         System.out.println("registration.htm POST");
         
-        /*if(accessBean.isLoggedIn())
+        if(accessBean.isLoggedIn())
         {
             model.put("loggedIn", "Logged in as " + accessBean.getUsername());
             
-            return "login";
-        }*/
+            //return "registration";
+        }
         
         if (result.hasErrors()) {
             return "registration";

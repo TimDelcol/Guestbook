@@ -55,12 +55,12 @@ public class MessageController {
         @ModelAttribute("TempMessage") @Valid TempMessage myMessage,
         BindingResult result, Map model) {
         System.out.println("newmessage.htm POST");
-        /*
+        
         if(accessBean.isLoggedIn())
         {
             model.put("loggedIn", "Logged in as " + accessBean.getUsername());
         }
-        */
+        
         if (result.hasErrors()) {
             return "newmessageform";
         }

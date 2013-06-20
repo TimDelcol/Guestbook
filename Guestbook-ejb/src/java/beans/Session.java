@@ -27,7 +27,9 @@ public class Session implements SessionLocal {
     
     @Override
     public String getUsername() {
-        return user.getUsername();
+        if(user != null)
+            return user.getUsername();
+        return "No name";
     }
 
     @Override
@@ -37,7 +39,9 @@ public class Session implements SessionLocal {
 
     @Override
     public int getID() {
-        return user.getId();
+        if(user != null)
+            return user.getId();
+        return 0;
     }
 
     @Override

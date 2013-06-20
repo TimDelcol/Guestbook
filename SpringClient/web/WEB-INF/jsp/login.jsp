@@ -14,7 +14,7 @@
 </head>
 <body>
      ${loggedIn}
-  <form:form method="post" action="login.htm" commandName="LoginUser">
+    <form:form method="post" action="login.htm" commandName="LoginUser">
     <table>
       <tr>
         <td>Username <font color="red"><form:errors path="username" /></font></td>

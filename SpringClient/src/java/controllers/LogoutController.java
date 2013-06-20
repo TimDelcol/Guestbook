@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 /**
  *
@@ -31,10 +31,10 @@ public class LogoutController {
         {
             model.put("loggedIn", "<font color='green'>Succesfully logged out</font>");
             accessBean.logout();
-            return "login";
+            return "index";
         }
         model.put("loggedIn", "<font color='red'>You were not logged in</font>");
-        return "login";
+        return "index";
     }
     
       private AccessBeanRemote lookupAccessBeanRemote() {
